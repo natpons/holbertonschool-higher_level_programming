@@ -16,7 +16,7 @@ if __name__ == '__main__':
     b = int(argv[3])
     operator = argv[2]
     if operator == '+':
-        print("{} + {} = {}".format(a, b, add(a, b)))
+        print(a, operator, b, '=', add(a, b))
     elif operator == '-':
         print("{} - {} = {}".format(a, b, sub(a, b)))
     elif operator == '*':
