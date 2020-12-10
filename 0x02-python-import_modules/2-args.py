@@ -2,9 +2,9 @@
 if __name__ == '__main__':
     from sys import argv
 argc = len(argv)
-if argc == 1:
+if argc is 1:
     print("0 arguments.")
-elif argc == 2:
+elif argc is 2:
     print("{} argument:".format(argc - 1))
 else:
     print("{} arguments".format(argc - 1))
