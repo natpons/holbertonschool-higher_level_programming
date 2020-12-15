@@ -2,7 +2,7 @@
 def no_c(my_string):
     string = []
     for char in my_string:
-        my_string.translate({ord('c'): None, ord('C'): None})
-        string = my_string.translate({ord('c'): None, ord('C'): None})
+        if char not in 'cC':
+            string.append(char)
 
-    return string
+    return ''.join(string)
