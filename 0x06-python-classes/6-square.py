@@ -49,7 +49,8 @@ class Square:
         """ to set position - defines value of class Square position """
         for item in value:
             if not isinstance(item, int) and item > 0 and len(value) != 2:
-                raise TypeError('position must be a tuple of 2 positive integers')
+                raise TypeError
+        ('position must be a tuple of 2 positive integers')
 
     def my_print(self):
         """ Prints in stdout the square with the character # """
