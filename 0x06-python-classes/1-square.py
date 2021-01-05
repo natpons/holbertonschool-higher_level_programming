@@ -10,6 +10,6 @@ class Square:
 
     def __init__(self, size):
         """
-            Initializes class Square by size
+        Initializes class Square by size
         """
         self.__size = size
