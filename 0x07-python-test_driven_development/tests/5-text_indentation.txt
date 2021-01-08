@@ -1,0 +1,54 @@
+The ``5-text_indentation`` module
+======================
+
+Using ``text_indentation``
+-------------------
+
+This is an example text file in reStructuredText format.  First import
+``text_indentation`` from the ``5-text_indentation`` module:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Now use it:
+
+    >>> text_indentation(45)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    >>> text_indentation('       Print string with space at the beginning')
+    Print string with space at the beginning
+
+    >>> text_indentation('Print string with space at the end       ')
+    Print string with space at the end
+
+    >>> text_indentation(-2)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    >>> text_indentation("""Hello, how are you ? I'm good""")
+    Hello, how are you ?
+    <BLANKLINE>
+    I'm good
+
+    >>> text_indentation("Holberton")
+    Holberton
+
+    >>> text_indentation("? , ! : .")
+    ?
+    <BLANKLINE>
+    , ! :
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+
+    >>> text_indentation(["Hi", "Hello", "Goodmorning"])
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
