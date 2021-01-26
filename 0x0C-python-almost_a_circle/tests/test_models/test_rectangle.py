@@ -47,6 +47,13 @@ class TestRectangle(unittest.TestCase):
             "__init__() missing 1 required positional argument: 'height'",
             str(e.exception))
 
+        with self.assertRaises(TypeError):
+            Rectangle()
+        with self.assertRaises(TypeError):
+            Rectangle(1)
+        with self.assertRaises(TypeError):
+            Rectangle(None)
+
     def test05_empty(self):
         """Test without arguments"""
         with self.assertRaises(TypeError) as e:
@@ -101,7 +108,7 @@ class TestRectangle(unittest.TestCase):
             Rectangle(1, 2, 3, 4.4)
         self.assertEqual('y must be an integer', str(e.exception))
 
-    def test09_string(self):
+    def test09_string1(self):
         """Test with string"""
         with self.assertRaises(TypeError) as e:
             Rectangle("1", 2, 3, 4,)
@@ -115,6 +122,11 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as e:
             Rectangle(1, 2, 3, "4")
         self.assertEqual('y must be an integer', str(e.exception))
+
+    def test09_string2(self):
+        """Test the str method"""
+        r1 = Rectangle(2, 2, 1, 1, 15)
+        self.assertEqual(str(r1), "[Rectangle] (15) 1/1 - 2/2")
 
     def test10_list(self):
         """Test with list"""
@@ -154,6 +166,70 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.area(), 6)
         self.assertEqual(r2.area(), 20)
         self.assertEqual(r3.area(), 56)
+
+    def test13_without_xy(self):
+        """ Test without x and y"""
+        r4 = Rectangle(10, 20)
+        self.assertEqual(r4.x, 0)
+        self.assertEqual(r4.y, 0)
+
+    def test14_x(self):
+        """ Test with x"""
+        r5 = Rectangle(10, 20, 5)
+        self.assertEqual(r5.x, 5)
+
+    def test15_y(self):
+        """ Test with y"""
+        r6 = Rectangle(10, 20, 5, 6)
+        self.assertEqual(r6.y, 6)
+
+    def test16_init_all_param(self):
+        """ Test initialize tha class with all parameters"""
+        r7 = Rectangle(10, 20, 5, 6, 4)
+        self.assertEqual(r7.width, 10)
+        self.assertEqual(r7.height, 20)
+        self.assertEqual(r7.x, 5)
+        self.assertEqual(r7.y, 6)
+        self.assertEqual(r7.id, 4)
+
+    def test17_type(self):
+        """Test if it is not a integer"""
+        with self.assertRaises(TypeError):
+            Rectangle(5, "coucou")
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 3, [8])
+        with self.assertRaises(TypeError):
+            Rectangle(10, 3, 1.4, 1)
+        with self.assertRaises(TypeError):
+            Rectangle(True, 3, 6, 1)
+
+    def test18_negative(self):
+        """Test with negative number"""
+        with self.assertRaises(ValueError):
+            Rectangle(-10, 20)
+        with self.assertRaises(ValueError):
+            Rectangle(10, 20, 4, -9)
+        with self.assertRaises(ValueError):
+            Rectangle(10, 20, -4, 9)
+        with self.assertRaises(ValueError):
+            Rectangle(10, -20, 4, 9)
+
+    def test_update(self):
+        """
+        Test for the uptade method
+        """
+        r1 = Rectangle(10, 10, 10, 10)
+        r1.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r1), "[Rectangle] (89) 4/5 - 2/3")
+
+    def test_up_kwargs(self):
+        """ Test for kwargs """
+        r2 = Rectangle(10, 10, 10, 10)
+        r2.update(height=1)
+        r2.update(width=1, x=2)
+        r2.update(y=1, width=2, x=3, id=90)
+        r2.update(x=1, height=2, y=3, width=4)
+        self.assertEqual(str(r2), "[Rectangle] (90) 1/3 - 4/2")
 
     if __name__ == '__main__':
         unittest.main()
