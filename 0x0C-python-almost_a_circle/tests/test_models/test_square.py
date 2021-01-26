@@ -20,8 +20,12 @@ class TestRectangle(unittest.TestCase):
         """
         Test the area function with the square class
         """
-        s1 = Square(4)
-        self.assertEqual(s1.area(), 16)
+        s1 = Square(2)
+        s2 = Square(3, 1)
+        s3 = Square(4, 1, 3)
+        self.assertEqual(s1.area(), 4)
+        self.assertEqual(s2.area(), 9)
+        self.assertEqual(s3.area(), 16)
 
     def test02_update(self):
         """
@@ -84,6 +88,80 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as e:
             Square(1, 2, float('nan'), 4)
         self.assertEqual('y must be an integer', str(e.exception))
+
+    def test08_infinity(self):
+        """Test with infinity"""
+        with self.assertRaises(TypeError) as e:
+            Square(float('inf'), 2, 3, 4,)
+        self.assertEqual('width must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, float('inf'), 3, 4,)
+        self.assertEqual('x must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, 2, float('inf'), 4)
+        self.assertEqual('y must be an integer', str(e.exception))
+
+    def test09_float(self):
+        """Test with float"""
+        with self.assertRaises(TypeError) as e:
+            Square(1.1, 2, 3, 4,)
+        self.assertEqual('width must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, 2.2, 3, 4,)
+        self.assertEqual('x must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, 2, 3.3, 4)
+        self.assertEqual('y must be an integer', str(e.exception))
+
+    def test10_string(self):
+        """Test with string"""
+        with self.assertRaises(TypeError) as e:
+            Square("1", 2, 3, 4)
+        self.assertEqual('width must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, "2", 3, 4,)
+        self.assertEqual('x must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, 2, "3", 4)
+        self.assertEqual('y must be an integer', str(e.exception))
+
+    def test11_list(self):
+        """Test with list"""
+        with self.assertRaises(TypeError) as e:
+            Square([1, 2, 3], 2, 3, 4)
+        self.assertEqual('width must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, [1, 2, 3], 3, 4)
+        self.assertEqual('x must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, 2, [1, 2, 3], 4)
+        self.assertEqual('y must be an integer', str(e.exception))
+
+    def test12_tuple(self):
+        """Test with list"""
+        with self.assertRaises(TypeError) as e:
+            Square((1, 2, 3), 2, 3, 4)
+        self.assertEqual('width must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, (1, 2, 3), 3, 4)
+        self.assertEqual('x must be an integer', str(e.exception))
+        with self.assertRaises(TypeError) as e:
+            Square(1, 2, (1, 2, 3), 4)
+        self.assertEqual('y must be an integer', str(e.exception))
+
+    def test13_type(self):
+        """Test with boolean"""
+        with self.assertRaises(TypeError):
+            Square(True, 3, 6, 1)
+
+    def test14_negative(self):
+        """Test with negative number"""
+        with self.assertRaises(ValueError):
+            Square(-10, 20)
+        with self.assertRaises(ValueError):
+            Square(10, -20, 4, 9)
+        with self.assertRaises(ValueError):
+            Square(10, 20, -4, 9)
 
     if __name__ == '__main__':
         unittest.main()
