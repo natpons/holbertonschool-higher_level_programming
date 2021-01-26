@@ -68,9 +68,10 @@ class Base:
         """
         Returns an instance with all attributes already set:
         - **dictionary can be thought of as a double pointer to a dictionary
-        - To use the update method to assign all attributes: create a Rectangle or
-        Square instance with dummy mandatory attributes (width, height, size, etc.)
-        - Call update instance method to this dummy instance to apply your real values
+        - To assign all attributes: create a Rectangle or Square instance
+        with dummy mandatory attributes (width, height, size, etc.)
+        - Call update instance method to this dummy instance to apply
+        your real values
         - **dictionary must be used as **kwargs of the method update
         """
         if cls.__name__ is "Square":
@@ -81,4 +82,3 @@ class Base:
             return None
         dummy.update(**dictionary)
         return dummy
-
