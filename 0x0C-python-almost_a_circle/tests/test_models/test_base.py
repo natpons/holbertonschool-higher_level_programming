@@ -47,5 +47,21 @@ class TestBase(unittest.TestCase):
         b10 = Base((10, 20, 30))
         self.assertEqual(b10.id, (10, 20, 30))
 
+    def test06_id(self):
+        """Test with the id"""
+        b11 = Base(33)
+        self.assertEqual(b11.id, 33)
+
+    def test07_id(self):
+        """Test without the id"""
+        b11 = Base()
+        b12 = Base()
+        self.assertEqual(b12.id, 6)
+
+    def test07_negative(self):
+        """Test without negative id"""
+        b13 = Base(-5)
+        self.assertEqual(b13.id, -5)
+
     if __name__ == '__main__':
         unittest.main()
