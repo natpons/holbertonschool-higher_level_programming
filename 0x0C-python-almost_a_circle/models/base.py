@@ -59,7 +59,7 @@ class Base:
         - Otherwise, return the list represented by json_string
         """
         if json_string is None or len(json_string) == 0:
-            json_string = []
+            return []
         else:
             return json.loads(json_string)
 
@@ -82,3 +82,13 @@ class Base:
             return None
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Returns a list of instances:
+        - The filename must be: <Class name>.json - example: Rectangle.json
+        - If the file doesnt exist, return an empty list
+        - Otherwise, return a list of instances - the type of these instances
+        depends on cls (current class using this method)
+        """
