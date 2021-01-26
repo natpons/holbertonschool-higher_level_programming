@@ -90,11 +90,6 @@ class Rectangle(Base):
         with the character #
         - by taking care of x and y
         """
-#        for i in range(self.__height):
-#           for j in range(self.__width):
-#               print('#', end="")
-#           print()
-
         if self.__height == 0 or self.__width == 0:
             print()
         else:
@@ -149,7 +144,8 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """
-        The public method that returns the dictionary representation of a Rectangle:
+        The public method that returns the dictionary representation
+        of a Rectangle
         - This dictionary must contain: id, width, height, x, y
         """
         attrs = ['id', 'width', 'height', 'x', 'y']
