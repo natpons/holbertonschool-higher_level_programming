@@ -237,5 +237,14 @@ class TestRectangle(unittest.TestCase):
         dictionary = r1.to_dictionary()
         json_dictionary = Rectangle.to_json_string([dictionary])
 
+    def test05_excess_args(self):
+        """Test for excess arguments"""
+        with self.assertRaises(TypeError) as e:
+            r = Rectangle(10, 2, 3, 12, 5, 8)
+        self.assertEqual(
+            "__init__() takes from 3 to 6 positional" +
+            " arguments but 7 were given",
+            str(e.exception))
+
     if __name__ == '__main__':
         unittest.main()
