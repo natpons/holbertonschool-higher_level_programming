@@ -53,14 +53,12 @@ class TestBase(unittest.TestCase):
         r1 = Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary])
-        
 
     def test07_to_json_string(self):
         """Test return the JSON string repr. of list_dictionaries"""
         r1 = Rectangle(None)
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary])
-        
 
     if __name__ == '__main__':
         unittest.main()
