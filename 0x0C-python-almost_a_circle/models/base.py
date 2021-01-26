@@ -73,4 +73,12 @@ class Base:
         - Call update instance method to this dummy instance to apply your real values
         - **dictionary must be used as **kwargs of the method update
         """
-        
+        if cls.__name__ is "Square":
+            dummy = cls(1)
+        elif cls.__name__ is "Rectangle":
+            dummy = cls(1, 1)
+        else:
+            return None
+        dummy.update(**dictionary)
+        return dummy
+
