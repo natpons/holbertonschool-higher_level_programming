@@ -16,8 +16,7 @@ Rectangle.prototype.print = function () {
 };
 
 Rectangle.prototype.rotate = function () {
-  let temp;
-  temp = this.height;
+  const temp = this.height;
   this.height = this.width;
   this.width = temp;
 };
