@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Lists all State objects that contain the letter a from the database hbtn_0e_6_usa
+Lists all State objects that contain the letter a from the db hbtn_0e_6_usa
 """
 
 import sys
@@ -20,8 +20,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    query_row = session.query(State).filter(State.name.like('%a%').order_by(State.id)
-    for row in query_row:
-        print(row)
+    for row in session.query(State).order_by(State.id):
+        if 'a' in row.name:
+            print("{}: {}".format(row.id, row.name))
 
     session.close()
