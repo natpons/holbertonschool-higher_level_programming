@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Prints the State object the name passed as argument from the db hbtn_0e_6_usa
+Adds the State object Louisiana to the database hbtn_0e_6_usa
 """
 
 import sys
