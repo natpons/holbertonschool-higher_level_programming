@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     states = session.query(State).filter(State.name.contains('a')).all()
     for obj in states:
-            session.delete(obj)
-            session.commit()
+        session.delete(obj)
+    session.commit()
 
     session.close()
