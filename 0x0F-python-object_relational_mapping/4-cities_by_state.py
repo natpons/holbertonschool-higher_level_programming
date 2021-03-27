@@ -13,15 +13,15 @@ if __name__ == '__main__':
         host='localhost',
         port=3306)
 
-cursor = connectiondb.cursor()
+    cursor = connectiondb.cursor()
 
-cursor.execute("SELECT cities.id, cities.name, states.name "
-               "FROM cities JOIN states ON cities.state_id = states.id "
-               "ORDER BY id ASC")
+    cursor.execute("SELECT cities.id, cities.name, states.name "
+                   "FROM cities JOIN states ON cities.state_id = states.id "
+                   "ORDER BY id ASC")
 
-query_rows = cursor.fetchall()
+    query_rows = cursor.fetchall()
 
-for row in query_rows:
-    print(row)
-cursor.close()
-connectiondb.close()
+    for row in query_rows:
+        print(row)
+    cursor.close()
+    connectiondb.close()
