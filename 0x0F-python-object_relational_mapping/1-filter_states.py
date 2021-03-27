@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     cursor = connectiondb.cursor()
     cursor.execute("SELECT id, name FROM states " +
-                   "WHERE name LIKE 'N%' ORDER BY id ASC")
+                   "WHERE BINARY name LIKE 'N%' ORDER BY id ASC")
     query_rows = cursor.fetchall()
 
     for row in query_rows:
