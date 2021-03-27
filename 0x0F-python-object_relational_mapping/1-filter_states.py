@@ -14,12 +14,12 @@ if __name__ == '__main__':
         host='localhost',
         port=3306)
 
-cursor = connectiondb.cursor()
-cursor.execute("SELECT id, name FROM states "
-               "WHERE name LIKE 'N%' ORDER BY id ASC")
-query_rows = cursor.fetchall()
+    cursor = connectiondb.cursor()
+    cursor.execute("SELECT id, name FROM states "
+                   "WHERE name LIKE 'N%' ORDER BY id ASC")
+    query_rows = cursor.fetchall()
 
-for row in query_rows:
-    print(row)
-cursor.close()
-connectiondb.close()
+    for row in query_rows:
+        print(row)
+    cursor.close()
+    connectiondb.close()
