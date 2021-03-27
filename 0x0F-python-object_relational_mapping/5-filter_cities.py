@@ -14,15 +14,15 @@ if __name__ == '__main__':
         host='localhost',
         port=3306)
 
-cursor = connectiondb.cursor()
+    cursor = connectiondb.cursor()
 
-cursor.execute("SELECT cities.name FROM cities JOIN states "
-               "ON cities.state_id = states.id WHERE states.name=%s"
-               "ORDER BY cities.id ASC", (sys.argv[4],))
+    cursor.execute("SELECT cities.name FROM cities JOIN states "
+                   "ON cities.state_id = states.id WHERE states.name=%s"
+                   "ORDER BY cities.id ASC", (sys.argv[4],))
 
-cities_rows = cursor.fetchall()
-"""join all tuple items into a string, using a , char as separator"""
-print(", ".join([city[0] for city in cities_rows]))
+    cities_rows = cursor.fetchall()
+    """join all tuple items into a string, using a , char as separator"""
+    print(", ".join([city[0] for city in cities_rows]))
 
-cursor.close()
-connectiondb.close()
+    cursor.close()
+    connectiondb.close()
