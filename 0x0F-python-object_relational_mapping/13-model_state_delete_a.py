@@ -20,8 +20,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for obj in session.query(State):
-        if 'a' in obj.name:
+    states = session.query(State).filter(State.name.contains('a')).all()
+    for obj in states:
             session.delete(obj)
             session.commit()
 
