@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     cursor = connectiondb.cursor()
     cursor.execute("SELECT id, name FROM states WHERE "
-                   "name='{}' ORDER BY id ASC".format(sys.argv[4]))
+                   "BINARY name='{}' ORDER BY id ASC".format(sys.argv[4]))
     query_rows = cursor.fetchall()
 
     for row in query_rows:
