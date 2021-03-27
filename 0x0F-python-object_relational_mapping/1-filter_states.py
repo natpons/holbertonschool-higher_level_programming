@@ -15,7 +15,7 @@ if __name__ == '__main__':
         port=3306)
 
     cursor = connectiondb.cursor()
-    cursor.execute("SELECT id, name FROM states "
+    cursor.execute("SELECT id, name FROM states " +
                    "WHERE name LIKE 'N%' ORDER BY id ASC")
     query_rows = cursor.fetchall()
 
