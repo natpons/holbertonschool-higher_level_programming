@@ -21,7 +21,8 @@ if __name__ == '__main__':
     """executes a database query"""
     cursor.execute("SELECT id, name FROM states ORDER BY id ASC")
 
-    """returns the sequence of all records remaining in the resulting dataset"""
+    """returns the sequence of all records
+    remaining in the resulting dataset"""
     query_rows = cursor.fetchall()
 
     for row in query_rows:
