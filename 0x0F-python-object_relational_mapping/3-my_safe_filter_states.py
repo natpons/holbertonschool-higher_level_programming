@@ -15,16 +15,16 @@ if __name__ == '__main__':
         host='localhost',
         port=3306)
 
-cursor = connectiondb.cursor()
+    cursor = connectiondb.cursor()
 
-"""%s replaced with the value from the tuple,
-automatically escaping the special symbols"""
-cursor.execute("SELECT id, name FROM states "
-               "WHERE name=%s ORDER BY id ASC", (sys.argv[4],))
+    """%s replaced with the value from the tuple,
+    automatically escaping the special symbols"""
+    cursor.execute("SELECT id, name FROM states "
+                   "WHERE name=%s ORDER BY id ASC", (sys.argv[4],))
 
-query_rows = cursor.fetchall()
+    query_rows = cursor.fetchall()
 
-for row in query_rows:
-    print(row)
-cursor.close()
-connectiondb.close()
+    for row in query_rows:
+        print(row)
+    cursor.close()
+    connectiondb.close()
