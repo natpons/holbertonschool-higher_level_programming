@@ -21,4 +21,4 @@ class State(Base):
                 unique=True)
     name = Column(String(128),
                   nullable=False)
-    cities = relationship("City", back_populates = "cities")
+    cities = relationship("City", back_populates="cities")
