@@ -3,12 +3,8 @@
    Base = declarative_base()"""
 
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-
-
-"""Allows us to create classes that include directives to describe
-   the actual database table they will be mapped to"""
-Base = declarative_base()
+from sqlalchemy.orm import relationship
+from relationship_city import Base, City
 
 
 class State(Base):
@@ -21,4 +17,8 @@ class State(Base):
                 unique=True)
     name = Column(String(128),
                   nullable=False)
-    cities = relationship("City", back_populates="cities")
+
+    """- cities: represent a relationship with the class City
+       - if the State obj is deleted, all linked City objs must be auto deleted
+       - the reference from a City object to his State should be named state"""
+    cities = relationship("City", backref="state", cascade="all, delete")
