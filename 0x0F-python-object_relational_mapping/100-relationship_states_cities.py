@@ -3,10 +3,10 @@
 from the db hbtn_0e_100_usa"""
 
 import sys
-from model_state import Base, State
-from model_city import City
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
+from relationship_state import State
+from relationship_city import Base, City
 
 
 """Creates a new instance that provides a connection to the DB"""
@@ -20,8 +20,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    new_obj = State(name='California')
-    session.add(new_obj)
-    session.commit()
+    """using the cities = relationship("City", backref="state", ...)
+       for the new State obj"""
+    new_state = City(name='San Francisco', state=State(name='California'))
+    session.add(new_state)
 
+    session.commit()
     session.close()
