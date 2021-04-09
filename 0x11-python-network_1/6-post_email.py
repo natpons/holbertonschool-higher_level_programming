@@ -4,6 +4,7 @@
    - and finally displays the body of the response"""
 
 import requests
+from sys import argv
 
 
 if __name__ == "__main__":
