@@ -3,12 +3,15 @@
    - sends a request to the URL
    - displays the body of the response"""
 
+
 import requests
 from sys import argv
+from requests.exceptions import HTTPError
 
-
-r = requests.get(argv[1])
-if r.status_code < 400:
+try:
+    r = requests.get(argv[1])
+    # https://docs.python-requests.org/en/master/user/quickstart/#response-status-codes
+    r.raise_for_status()
     print(r.text)
-else:
-    print("Error code: {}".format(r.status_code))
+except HTTPError as http_error:
+    print('Error code: {}'.format(r.status_code))
