@@ -10,13 +10,14 @@ request(url, function (error, response, body) {
     // responseData.results is an object that has a key results
     const films = JSON.parse(body).results;
     let count = 0;
-    for (const filmIND in films) {
-      // choose all characters for each film
-      const filmCHARS = films[filmIND].characters;
-      // parse all indexes in every film
-      for (const charIND in filmCHARS) {
-        // parse every character for very film
-        if (filmCHARS[charIND].includes('18')) { count = count + 1; }
+    // parse all films
+    for (const index in films) {
+      // do the "characters" lines list for each film
+      const charsinfilm = films[index].characters;
+      // parse characters lines for the film one after another
+      for (const onecharline in charsinfilm) {
+        // parse every character line for each film
+        if (charsinfilm[onecharline].includes('18')) { count = count + 1; }
       }
     }
     console.log(count);
